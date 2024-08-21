@@ -1,6 +1,6 @@
 # Versions based on
-# https://dl.espressif.com/dl/esp-idf/espidf.constraints.v5.1.txt
-# on 2023-07-05.
+# https://dl.espressif.com/dl/esp-idf/espidf.constraints.v5.2.txt
+# on 2024-02-20.
 
 { stdenv
 , lib
@@ -209,6 +209,43 @@ rec {
     meta = {
       homepage = "https://github.com/espressif/esp-idf-panic-decoder";
     };
+  };
+
+  esp-idf-nvs-partition-gen = buildPythonPackage rec {
+    pname = "esp-idf-nvs-partition-gen";
+    version = "0.1.2";
+    
+    format = "pyproject";
+
+    src = fetchPypi {
+      pname = "esp_idf_nvs_partition_gen";
+      inherit version;
+      
+      sha256 = "sha256-HjW5RCKfy83LQgAs0tOW/f9LPVoLwHY1pyb6ar+AxwY=";
+    };
+    
+    propagatedBuildInputs = [
+      setuptools
+      cryptography
+    ];
+    
+    doCheck = false;
+    
+    meta = {
+      homepage = "https://github.com/espressif/esp-idf-nvs-partition-gen";
+    };
+  };
+
+  pyclang = buildPythonPackage rec {
+    pname = "pyclang";
+    version = "0.4.2";
+
+    src = fetchPypi {
+      inherit pname version;
+      sha256 = "sha256-vuDZ5yEhyDpCmkXoC+Gr2X5vMK5B46HnktcvBONjxXM=";
+    };
+
+    doCheck = false;
   };
 }
 

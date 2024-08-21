@@ -1,11 +1,9 @@
-{ rev ? "v5.1.3"
-, sha256 ? "sha256-0QsIFOcSx1N15t5po3TyOaNvpzBUfKaFdsRODOBoXCI="
+{ rev ? "v5.3"
+, sha256 ? "sha256-w+xyva4t21STVtfYZOXY2xw6sDc2XvJXBZSx+wd1N6Y="
 , toolsToInclude ? [
     "xtensa-esp-elf-gdb"
     "riscv32-esp-elf-gdb"
-    "xtensa-esp32-elf"
-    "xtensa-esp32s2-elf"
-    "xtensa-esp32s3-elf"
+    "xtensa-esp-elf"
     "esp-clang"
     "riscv32-esp-elf"
     "esp32ulp-elf"
@@ -73,7 +71,8 @@ let
           esp-idf-monitor
           esp-idf-size
           esp-idf-panic-decoder
-
+          esp-idf-nvs-partition-gen
+          pyclang
           freertos_gdb
 
           # The esp idf vscode extension seems to want pip, too
